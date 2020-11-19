@@ -33,8 +33,28 @@ export class MultiplicationTable {
       }
       expressions.push(expression)
     }
+    /*
+        const start = equations[0][0].factor1
+        const width: number[] = equations[equations.length - 1].map(({firstFactor, secondFactor, product}) => {
+          return `${factor1}&${factor2}=${product}`.length
+        })
+        expressions.map( row => row.map( ({factor1, factor2, product}) => {
+          const col = factor1 - start
+          const spacing = '  '.repeat(width[col] - equation.length)  列宽
+          return
+        }
+
+
+        )
+    */
     return expressions
   }
+
+  // private output(expression: Expression): string
+  // {
+  //     const expressions = this.buildExpressions(start, end)
+  //     const result =
+  // }
 
   public render(start: number, end: number): string {
     if(this.isStartGreaterThanEnd(start, end))  return ''
@@ -42,6 +62,11 @@ export class MultiplicationTable {
     const expressions = this.buildExpressions(start, end)
     // destructing  (这个写法还需要理解一下)
     const rendered = expressions.map(row => row.map(({firstFactor, secondFactor, product}) => `${firstFactor}*${secondFactor}=${product}`).join('  ')).join('\n')
+    // console.log(rendered)
+    // console.log(rendered.length)
     return rendered
   }
 }
+
+// let item = new MultiplicationTable()
+// item.render(1,2)
